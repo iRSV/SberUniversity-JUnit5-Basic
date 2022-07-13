@@ -6,6 +6,7 @@ group = "ru.sberuniversity"
 version = "1.0"
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -14,6 +15,12 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.8.2")
 }
 
-tasks.getByName<Test>("test") {
+tasks.compileJava {
+    sourceCompatibility = "17"
+    targetCompatibility = "17"
+    options.encoding = "UTF-8"
+}
+
+tasks.test {
     useJUnitPlatform()
 }
